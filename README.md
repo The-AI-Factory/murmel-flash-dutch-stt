@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/murmel-logo.png" alt="Murmel" width="160">
+  <img src="https://raw.githubusercontent.com/The-AI-Factory/murmel-flash-dutch-stt/main/assets/murmel-logo.png" alt="Murmel" width="160">
 </p>
 
 <h1 align="center">murmel-flash-dutch-stt</h1>
@@ -49,8 +49,8 @@ Benchmark on four commonly used open Dutch test sets, with every model on the sa
 A100. The benchmark is fully reproducible:
 [The-AI-Factory/murmel-flash-dutch-stt-eval](https://github.com/The-AI-Factory/murmel-flash-dutch-stt-eval).
 
-![Average word error rate](docs/img/wer.png)
-![Word error rate against model size](docs/img/wer-vs-size.png)
+![Average word error rate](https://raw.githubusercontent.com/The-AI-Factory/murmel-flash-dutch-stt/main/docs/img/wer.png)
+![Word error rate against model size](https://raw.githubusercontent.com/The-AI-Factory/murmel-flash-dutch-stt/main/docs/img/wer-vs-size.png)
 
 | Model | Publisher | Params | FLEURS | Common Voice 17 | MLS | VoxPopuli | Average | Speed (RTFx) |
 |---|---|---|---|---|---|---|---|---|
@@ -73,14 +73,15 @@ A100. The benchmark is fully reproducible:
 ## Getting started
 
 **1. Install.** Python 3.10 to 3.13 (tested on 3.13; brand-new Python releases often have no PyTorch build yet),
-from source:
+from PyPI:
 
 ```bash
-git clone https://github.com/The-AI-Factory/murmel-flash-dutch-stt
-cd murmel-flash-dutch-stt
 python -m venv .venv && source .venv/bin/activate      # Windows: .venv\Scripts\activate
-pip install -e .
+pip install murmel-flash
 ```
+
+Or from source: `git clone https://github.com/The-AI-Factory/murmel-flash-dutch-stt` and `pip install -e .` in
+the clone.
 
 For mp3, m4a, mp4 or webm input you also need `ffmpeg` on your PATH (`brew install ffmpeg` on macOS,
 `sudo apt install ffmpeg` on Debian/Ubuntu, `winget install ffmpeg` on Windows). wav, flac, aiff and ogg work
@@ -113,7 +114,7 @@ murmel-flash interview.mp3                        # prints the transcript
 murmel-flash interview.mp3 --json out/            # also writes out/interview.json (segments, words with times)
 murmel-flash call.wav --words "Omtzigt,Hanzehogeschool,Bolsward"   # names that must be spelled right
 murmel-flash lecture.mp3 --mode ctc               # ~3x faster, a little less accurate
-murmel-flash --mic                                # live from the microphone (pip install sounddevice)
+murmel-flash --mic                                # live from the microphone (pip install "murmel-flash[mic]")
 murmel-flash serve                                # OpenAI-compatible API on http://127.0.0.1:8765/v1
 ```
 
@@ -159,7 +160,7 @@ to write SRT/VTT directly.
 
 `murmel-flash serve --beam N` sets the beam for the server.
 
-**Microphone and live input.** `murmel-flash --mic` transcribes the microphone until Ctrl-C (`pip install sounddevice` once).
+**Microphone and live input.** `murmel-flash --mic` transcribes the microphone until Ctrl-C (`pip install "murmel-flash[mic]"` once).
 In Python, feed audio as it arrives from a microphone, a call or a broadcast. While a stretch of speech is
 open you get a cheap partial every second; as soon as it ends (a pause, or 25 s) it is decoded properly and
 committed as a final segment that will not change. The model has full context, so this is live captioning with
@@ -181,7 +182,7 @@ for ev in session.finish():
 From the command line:
 
 ```bash
-pip install sounddevice          # once; or: pip install -e ".[mic]" in your clone
+pip install "murmel-flash[mic]"  # once: adds sounddevice
 murmel-flash --mic               # transcribe the microphone until Ctrl-C
 murmel-flash --mic --words "Omtzigt,Bolsward"
 murmel-flash recording.mp3 --stream   # simulate live input from a file
@@ -191,7 +192,7 @@ murmel-flash recording.mp3 --stream   # simulate live input from a file
 OpenAI audio API on your machine, so any tool with a "custom transcription endpoint" setting can use the model.
 
 ```bash
-pip install -e ".[serve]"                     # in your clone: fastapi + uvicorn, once
+pip install "murmel-flash[serve]"             # once: adds fastapi + uvicorn
 murmel-flash serve                             # http://127.0.0.1:8765/v1
 murmel-flash serve --api-key mykey             # with a required bearer token
 ```
@@ -314,7 +315,7 @@ The corpora themselves are not redistributed.
 
 ## Licence
 
-The code and the weights in this repository are released under the [murmel-flash Licence 1.0](LICENSE). It is
+The code and the weights in this repository are released under the [murmel-flash Licence 1.0](https://github.com/The-AI-Factory/murmel-flash-dutch-stt/blob/main/LICENSE). It is
 **free** for individuals, for teaching and open research, and for small organisations (fewer than 10 employees and
 under €1M turnover), for any purpose including commercial use.
 
@@ -323,7 +324,7 @@ under €1M turnover), for any purpose including commercial use.
 €1M or more in turnover, suppliers working for them, and anyone offering murmel-flash as a hosted transcription
 service. A 30-day evaluation is free for everyone, government and large organisations included. Contact The AI Factory at [murmel@the-ai-factory.com](mailto:murmel@the-ai-factory.com) for a commercial licence
 of this model, or of the **flagship model** (larger and more accurate, the one behind murmel.nl), self-hosted or via
-the API. See [COMMERCIAL-LICENSE.md](COMMERCIAL-LICENSE.md).
+the API. See [COMMERCIAL-LICENSE.md](https://github.com/The-AI-Factory/murmel-flash-dutch-stt/blob/main/COMMERCIAL-LICENSE.md).
 
 ## Development
 
