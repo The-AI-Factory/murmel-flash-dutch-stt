@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "murmel-flash"
-version = "4.1.0rc1"
+version = "5.0.0"
 description = "Dutch + English speech recognition: FastConformer hybrid CTC/attention models with punctuation, word timestamps, and domain word lists."
 readme = "README.md"
 license = { file = "LICENSE" }
@@ -39,6 +39,7 @@ dev = ["pytest>=8", "ruff>=0.5"]
 [project.urls]
 Homepage = "https://github.com/The-AI-Factory/murmel-flash-dutch-stt"
 Models = "https://huggingface.co/theaifactorybv/murmel-flash-m-v5"
+Issues = "https://github.com/The-AI-Factory/murmel-flash-dutch-stt/issues"
 
 [project.scripts]
 murmel-flash = "murmel_flash.cli:main"

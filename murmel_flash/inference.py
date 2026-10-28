@@ -188,8 +188,7 @@ def join_windows(segments: list[dict], join_gap_s: float, is_sentence_end: Calla
 # ---------------------------------------------------------------------------------------------------- model
 
 
-# The model this package ships with. NOTE for the release: the final public repo will be murmel-flash-m-v5; that name is
-# currently taken by the training run, so the release-layout repo is used until the repos are renamed.
+# The model this package ships with.
 DEFAULT_MODEL = "theaifactorybv/murmel-flash-m-v5"
 
 
